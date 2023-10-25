@@ -38,13 +38,14 @@ function PlantPage() {
   useEffect(()=>{
     fetch(' http://localhost:6001/plants')
     .then(res => res.json())
-    .then(plants => console.log(plants))
+    .then(plants => setPlantsList(plants))
   }, [])
+  
   return (
     <main>
       <NewPlantForm />
       <Search />
-      <PlantList />
+      <PlantList plantsList={plantsList} />
     </main>
   );
 }
