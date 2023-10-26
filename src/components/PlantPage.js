@@ -40,10 +40,14 @@ function PlantPage() {
     .then(res => res.json())
     .then(plants => setPlantsList(plants))
   }, [])
+
+  const handleFormData =(newPlant)=>{
+    setPlantsList(prevPlant => [...prevPlant, newPlant])
+  }
   
   return (
     <main>
-      <NewPlantForm />
+      <NewPlantForm onSubmit={handleFormData}/>
       <Search />
       <PlantList plantsList={plantsList} />
     </main>

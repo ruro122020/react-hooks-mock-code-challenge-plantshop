@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function NewPlantForm() {
+function NewPlantForm({onSubmit}) {
   const [formData, setFormData] = useState({
     name:'',
     image:'',
@@ -20,7 +20,7 @@ function NewPlantForm() {
       body: JSON.stringify(formData)
     })
     .then(res => res.json())
-    .then(plant => console.log(plant))
+    .then(plant => onSubmit(plant))
   }
   return (
     <div className="new-plant-form">
