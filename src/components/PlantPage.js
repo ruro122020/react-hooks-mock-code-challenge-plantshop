@@ -36,7 +36,7 @@ function PlantPage() {
 
   //fetch requests
   useEffect(()=>{
-    fetch(' http://localhost:6001/plants')
+    fetch('http://localhost:6001/plants')
     .then(res => res.json())
     .then(plants => setPlantsList(plants))
   }, [])
