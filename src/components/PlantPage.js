@@ -27,29 +27,42 @@
         -- call the handleFormData function and pass the formData to the function
     - add new plant to the plantsList in the PlantPage component
 */
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
 
 function PlantPage() {
   const [plantsList, setPlantsList] = useState([])
-
+  const [originalPlantsList, setOriginalPlantsList] = useState([])
   //fetch requests
-  useEffect(()=>{
+  useEffect(() => {
     fetch('http://localhost:6001/plants')
     .then(res => res.json())
-    .then(plants => setPlantsList(plants))
+    .then(plants => {
+      setPlantsList(plants)
+      setOriginalPlantsList(plants)
+    })
   }, [])
 
-  const handleFormData =(newPlant)=>{
+  const handleFormData = (newPlant) => {
     setPlantsList(prevPlant => [...prevPlant, newPlant])
   }
-  
+  const handleSearch = (searchInput) => {
+    if (searchInput === '') {
+      setPlantsList(originalPlantsList)
+    }else{
+      const filteredPlants = plantsList.filter(plant => {
+        const plantName = plant.name.toLowerCase()
+        return plantName.includes(searchInput)
+      })
+      setPlantsList(filteredPlants)
+    }
+  }
   return (
     <main>
-      <NewPlantForm onSubmit={handleFormData}/>
-      <Search />
+      <NewPlantForm onSubmit={handleFormData} />
+      <Search onSearch={handleSearch} />
       <PlantList plantsList={plantsList} />
     </main>
   );
