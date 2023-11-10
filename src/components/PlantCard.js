@@ -1,10 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function PlantCard({plant}) {
-  const {id, image, name, price}=plant
+function PlantCard({ plant, getPlantToEdit }) {
+  const { id, image, name, price } = plant
   const [inStock, setInStock] = useState(true)
-  const handleInStockClick=()=>{
+
+  const handleInStockClick = () => {
     setInStock(prevInStock => !prevInStock)
+  }
+
+  const handleEditClick = () => {
+    getPlantToEdit(plant)
   }
   return (
     <li className="card">
@@ -14,8 +19,9 @@ function PlantCard({plant}) {
       {inStock ? (
         <button onClick={handleInStockClick} className="primary">In Stock</button>
       ) : (
-        <button>Out of Stock</button>
+        <button onClick={handleInStockClick}>Out of Stock</button>
       )}
+      <button onClick={handleEditClick}>Edit</button>
     </li>
   );
 }
