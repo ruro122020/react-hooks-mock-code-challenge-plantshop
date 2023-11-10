@@ -3,6 +3,7 @@
   2. I can add a new plant to the page by submitting the form.
   3. I can mark a plant as "sold out".
   4. I can search for plants by their name and see a filtered list of plants.
+  Core deliverable are done
 */
 import React from "react";
 import Header from "./Header";
