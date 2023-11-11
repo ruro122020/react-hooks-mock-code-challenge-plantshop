@@ -12,7 +12,6 @@ function PlantCard({ plant, getPlantToEdit, onPlantDelete }) {
     getPlantToEdit(plant)
   }
   const handleDeleteClick = () => {
-    // onPlantDelete(plant)
     fetch(`http://localhost:6001/plants/${id}`, {
       method: 'DELETE'
     })

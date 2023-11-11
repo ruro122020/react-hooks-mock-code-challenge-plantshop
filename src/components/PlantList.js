@@ -15,7 +15,6 @@ function PlantList({ plantsList, searchValue, getPlantToEdit, onPlantDelete }) {
   />)
   return (
     <ul className="cards">
-      {/* render PlantCards components in here */}
       {displayPlants}
     </ul>
   );
