@@ -8,7 +8,7 @@ Core Deliverables:
 
   Advanced Deliverable:
   1. I can update the price of a plant and still see the updated price after refreshing the page.(done)
-  2. I can delete a plant and it is still gone when I refresh the page.
+  2. I can delete a plant and it is still gone when I refresh the page.(done)
 */
 import React from "react";
 import Header from "./Header";

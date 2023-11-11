@@ -48,6 +48,11 @@ function PlantPage() {
     setIsEditForm(true)
     setPlantToEdit(editPlant)
   }
+
+  const getPlantToDelete = (deletePlant) => {
+    const newPlantsList = plantsList.filter(plant => plant.id !== deletePlant.id)
+    setPlantsList(newPlantsList)
+  }
   return (
     <main>
       {isEditForm ?
@@ -58,10 +63,19 @@ function PlantPage() {
           isEditForm={isEditForm}
         />
         :
-        <NewPlantForm onSubmit={handleFormData} btnText='Add Plant' />}
-
-      <Search searchValue={searchValue} onSearch={handleSearch} />
-      <PlantList plantsList={plantsList} searchValue={searchValue} getPlantToEdit={getPlantToEdit} />
+        <NewPlantForm
+          onSubmit={handleFormData}
+          btnText='Add Plant' />}
+      <Search
+        searchValue={searchValue}
+        onSearch={handleSearch}
+      />
+      <PlantList
+        plantsList={plantsList}
+        searchValue={searchValue}
+        getPlantToEdit={getPlantToEdit}
+        onPlantDelete={getPlantToDelete}
+      />
     </main>
   );
 }
